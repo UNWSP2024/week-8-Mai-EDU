@@ -1,5 +1,31 @@
-# Program #5: Course Info
-# Write a program that has the user input a bunch of course ID and course name pairs.  
-# For example a course ID could be "COS 2005" and the course name could be "Python Programming."   
-# Then ask the user for a subject (like "COS"). 
-# Finally, the program will display the ID and name of all the courses having that subject.
+#Programmer: Mai Lillie
+# Date: 10/25/24
+# Program: Course Info
+
+# Establishing Variables
+course_dictionary = {}
+course_list = []
+user_input = "Yes"
+output_list = []
+
+# Getting the users input
+while user_input != "No":
+    course_id = input("What's the course ID?: ")
+    course_title = input("What's the course title?: ")
+    course_list.append(course_id)
+    course_dictionary[course_id] = course_title
+    user_input = input("Would you like to add another course?: ")
+
+# The function that searches through the dictionary
+def search_method(subject_input, main_list):
+    new_list = []
+    for x in range(0, len(main_list)):
+        course = main_list[x]
+        if subject_input in course:
+            new_list.append(course_dictionary[course])
+    return new_list
+
+# Running the main program
+subject = input("What subject would you like to search for?: ")
+output_list = search_method(subject, course_list)
+print(f"These are the subjects that match: {output_list}")
